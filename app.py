@@ -63,4 +63,4 @@ def deleteProduct(product_name):
 
 
 if __name__ == '__main__':
-    app.run(debug=True,'0.0.0.0', port=4000)
+    app.run('0.0.0.0', port=8080)
