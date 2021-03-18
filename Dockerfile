@@ -13,7 +13,7 @@ COPY . .
 RUN apt -y update && apt -y install python3-pip && pip3 install -r /app/requirements.txt
 
 #Mostramos que estamos binndeando el 5000
-EXPOSE 5000
+EXPOSE 8080
 
 
 CMD ["python" , "app.py" ]
