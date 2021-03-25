@@ -21,7 +21,7 @@ pipeline {
           }
           sh '''
           sleep 120
-          docker run -d --name=php-test -p 5000:5000 php-test-app
+          docker run -d --name=php-test -p 5000:5000 dockerImage
           '''
           
         }
