@@ -20,7 +20,7 @@ pipeline {
                 dockerImage.push("$BUILD_NUMBER")
           }
           sh '''
-          docker run -d --name=flaskapi -p 5000:5000 mguazzardo/curso-jenkins
+          docker run -d --name=flaskapi -p 5000:5000 mguazzardo/curso-jenkins:8
           '''
           
         }
