@@ -20,8 +20,7 @@ pipeline {
                 dockerImage.push("$BUILD_NUMBER")
           }
           sh '''
-          sleep 120
-          docker run -d --name=php-test -p 5000:5000 dockerImage
+          docker run -d --name=flaskapi -p 5000:5000 mguazzardo/curso-jenkins
           '''
           
         }
