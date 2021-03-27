@@ -1,0 +1,17 @@
+pipeline {
+  environment {
+    registry = "mguazzardo/curso-jenkins"
+    registryCredential = 'dockerhub'
+  } 
+ agent any  
+  stages {
+    stage('Building image') {
+      steps{
+        script {
+          //docker.build registry + ":$BUILD_NUMBER" // Cambio para que pueda pushear con groovy
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    } // fin del stage
+   }
+   }
