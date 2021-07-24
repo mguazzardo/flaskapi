@@ -4,7 +4,7 @@ dpkg -i octant_0.22.0_Linux-64bit.deb
 
 #Luego
 
-octan
+octant
 
 #Esto nos abre en localhost:7777
 
