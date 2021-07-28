@@ -1,0 +1,1 @@
+minikube addons configure metallb 
