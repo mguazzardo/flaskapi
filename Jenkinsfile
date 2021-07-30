@@ -18,10 +18,22 @@ pipeline {
       
           sh '''
           docker run -d --name=flaskapi -p 5000:5000 mguazzardo/curso-jenkins:$BUILD_NUMBER
+          
           '''
           
       }//steps
     } //stage
+    
+    stage('Upload Image') {
+      steps{
+        script {
+          docker.withRegistry( 'https://index.docker.io/v1/', registryCredential ) {
+
+          }
+        }
+      }
+    }
+    
     
   }//stages
 }//pipeline
