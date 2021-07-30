@@ -28,9 +28,12 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://index.docker.io/v1/', registryCredential ) {
-            
+            //Poner con groovy
 
           }
+          sh '''
+          docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
+             '''
         }
       }
     }
