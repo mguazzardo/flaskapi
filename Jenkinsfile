@@ -39,5 +39,16 @@ pipeline {
     }
     
     
+    
+    stage('Deploy to k8s') {
+      steps{
+          sh '''
+          #docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
+          ssh 172.17.0.1 kubens
+             '''
+        
+      }
+    }
+    
   }//stages
 }//pipeline
