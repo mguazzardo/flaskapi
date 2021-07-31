@@ -44,7 +44,7 @@ pipeline {
       steps{
           sh '''
           #docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
-          ssh 172.17.0.1 kubens
+          ssh 172.17.0.1 kubect create deployment flaskapi --image=mguazzardo/flaskapi -n flaskapi
              '''
         
       }
