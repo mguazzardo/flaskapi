@@ -27,7 +27,7 @@ pipeline {
     
     stage ('Deploy k8s') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'sshAllServersRoot', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
+        withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
           sh '''
            sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@54.67.68.55 'ls'
           '''
