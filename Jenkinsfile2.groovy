@@ -29,6 +29,7 @@ pipeline {
 
         sh '''
         chmod +x curl_test.sh
+        ./curl_test.sh
         sleep 5
         docker rm -f flaskapi
 
