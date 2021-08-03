@@ -29,7 +29,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
           sh '''
-           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@54.67.68.55 'kubectl create deployment flaskapi --image=mguazzardo/flaskapi'
+           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'kubectl create deployment flaskapi --image=mguazzardo/flaskapi'
           '''
         }
         
