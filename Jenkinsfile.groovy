@@ -27,9 +27,9 @@ pipeline {
     
     stage ('Deploy k8s') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
+        withCredentials([usernamePassword(credentialsId: 'ssh-key', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
           sh '''
-           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'kubectl create deployment flaskapi --image=mguazzardo/flaskapi'
+           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'kubectl create deployment flaskapi --image=mguazzardo/flaskapi -n flaskapi'
           '''
         }
         
