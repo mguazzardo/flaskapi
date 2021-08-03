@@ -6,10 +6,7 @@ pipeline {
  agent any
   stages {
 
-stage('Build Docker Image') {
-            when {
-                branch 'master'
-            }
+    stage('Build Docker Image') {
             steps {
                 script {
                     app = docker.build("mguazzardo/flaskapi:latest")
@@ -18,9 +15,6 @@ stage('Build Docker Image') {
         }
 
    stage('Push Docker Image') {
-            when {
-                branch 'master'
-            }
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
