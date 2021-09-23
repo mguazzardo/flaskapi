@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: flaskapi-ingress
+spec:
+  rules:
+    - host: flaskapi.192.168.56.111.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: flaskapi
+              servicePort: 5000
