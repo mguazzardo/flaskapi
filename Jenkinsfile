@@ -13,9 +13,9 @@ pipeline {
         }
       }
     } // fin del stage
-   stage('Deploy Image') {
+   stage('Deploy and Test Image') {
       steps{
-      
+          
           sh '''
           chmod +x ./test.sh
           ./test.sh
@@ -44,7 +44,7 @@ pipeline {
       steps{
           sh '''
           #docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
-          ssh 172.17.0.1 kubectl create deployment flaskapi --image=mguazzardo/flaskapi -n flaskapi
+          #ssh 172.17.0.1 kubectl create deployment flaskapi --image=mguazzardo/flaskapi -n flaskapi
              '''
         
       }
