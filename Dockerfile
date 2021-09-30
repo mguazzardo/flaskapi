@@ -10,7 +10,7 @@ COPY . .
 #Necesitamos tener instalados flask, python y pip3
 
 
-RUN apt -y update && apt -y install python3-pip && pip3 install -r /app/requirements.txt
+RUN apt -y update && apt -y install python3-pip && apt -y install nmap && pip3 install -r /app/requirements.txt
 
 #Mostramos que estamos binndeando el 5000
 EXPOSE 5000 
