@@ -2,7 +2,7 @@ SALIDA=$(docker ps | grep flaskapi | grep -v k8s)
 if [ ! -z "$SALIDA" ]
 then
               echo "esta corriendo una imagen"
-              exit 0
+              exit 1
 else
-              docker run -d --name=flaskapi -p 5000:5000 mguazzardo/curso-jenkins:$BUILD_NUMBER
+              echo "No hay imagen corriendo"
 fi 
