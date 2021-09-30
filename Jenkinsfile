@@ -17,6 +17,7 @@ pipeline {
       steps{
           
           sh '''
+          docker run -d  -p 5000:5000 --name flaskapi $registry:$BUILD_NUMBER
           chmod +x ./test.sh
           ./test.sh
           '''
