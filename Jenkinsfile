@@ -9,7 +9,7 @@ pipeline {
       steps{
         script {
           //docker.build registry + ":$BUILD_NUMBER" // Cambio para que pueda pushear con groovy
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          //dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     } // fin del stage
@@ -19,7 +19,7 @@ pipeline {
           sh '''
           chmod +x ./test.sh
           ./test.sh
-          docker run -d  -p 5000:5000 --name flaskapi $registry:$BUILD_NUMBER
+          docker run -d  -p 5000:5000 --name flaskapi $registry:7
           '''
           
       }//steps
