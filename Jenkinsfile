@@ -33,7 +33,7 @@ pipeline {
 
           }
           sh '''
-          #docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
+          docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
              '''
         }
       }
