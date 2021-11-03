@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "mguazzardo/curso-jenkins"
-    registryCredential = 'dockerhub'
+    registryCredential = 'dockerkub'
   } 
  agent any  
   stages {
@@ -11,37 +11,12 @@ pipeline {
           sh '''
           chmod +x ./test.sh
           ./test.sh
-          docker run -d  -p 5000:5000 --name flaskapi $registry:7
+          docker run -d  -p 5000:5000 --name flaskapi flaskapi
           '''
           
       }//steps
     } //stage
     
-    stage('Upload Image') {
-      steps{
-        script {
-          docker.withRegistry( 'https://index.docker.io/v1/', registryCredential ) {
-            //Poner con groovy
-
-          }
-          sh '''
-          docker push mguazzardo/curso-jenkins:7
-             '''
-        }
-      }
-    }
-    
-    
-    
-    stage('Deploy to k8s') {
-      steps{
-          sh '''
-          #docker push mguazzardo/curso-jenkins:$BUILD_NUMBER
-          #ssh 172.17.0.1 kubectl create deployment flaskapi --image=mguazzardo/flaskapi -n flaskapi
-             '''
         
-      }
-    }
-    
   }//stages
 }//pipeline
