@@ -1,0 +1,21 @@
+pipeline { 
+  environment { 
+    registry = "mguazzardo/curso-jenkins" 
+    registryCredential = 'dockerhub' 
+  } 
+ agent any 
+  stages { 
+ 
+ 
+    stage ('Deploy k8s') { 
+      steps { 
+        withCredentials([usernamePassword(credentialsId: 'pass-master', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) { 
+          sh ''' 
+           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'kubectl create ns mundose && kubectl create deployment miphp --image=mguazzardo/miphp -n mundose' 
+          ''' 
+        } 
+      } 
+    } 
+ 
+  }//stages 
+}//pipeline
