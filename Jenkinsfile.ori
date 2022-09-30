@@ -25,9 +25,9 @@ pipeline {
     
     stage ('Deploy k8s') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
+        withCredentials([usernamePassword(credentialsId: 'root-pass', usernameVariable: 'USUARIO', passwordVariable: 'CONTRASENIA')]) {
           sh '''
-           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'ls'
+           sshpass -p ${CONTRASENIA} ssh -o StrictHostKeyChecking=no ${USUARIO}@172.17.0.1 'kubectl create ns mundose && kubectl create deployment miphp --image=mguazzardo/miphp -n mundose'
           '''
         }
       }
